@@ -326,6 +326,8 @@ export default {
       thereIsNoPreviewAvailableForThisAttachment:
         'There is no preview available for this attachment.',
       time: 'Time',
+      timeEntries: 'Time entries',
+      noTimeEntries: 'No time entries yet',
       title: 'Title',
       trash: 'Trash',
       trashHasBeenSuccessfullyEmptied: 'Trash has been successfully emptied.',
@@ -461,6 +463,7 @@ export default {
       editUsername_title: 'Edit Username',
       emptyTrash: 'Empty trash',
       emptyTrash_title: 'Empty Trash',
+      exportTimeReport: 'Export time report',
       import: 'Import',
       join: 'Join',
       leave: 'Leave',

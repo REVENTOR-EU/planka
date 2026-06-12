@@ -23,6 +23,7 @@ import { BoardMembershipRoles, ListTypes } from '../../../constants/Enums';
 import { ListTypeIcons } from '../../../constants/Icons';
 import EditName from './EditName';
 import ActionsStep from './ActionsStep';
+import ListTimeTotal from './ListTimeTotal';
 import DraggableCard from '../../cards/DraggableCard';
 import AddCard from '../../cards/AddCard';
 import ArchiveCardsStep from '../../cards/ArchiveCardsStep';
@@ -226,6 +227,7 @@ const List = React.memo(({ id, index }) => {
                     />
                   )}
                   {list.name}
+                  <ListTimeTotal listId={id} />
                 </div>
               )}
               {list.type !== ListTypes.ACTIVE && (

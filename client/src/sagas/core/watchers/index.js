@@ -28,6 +28,7 @@ import customFields from './custom-fields';
 import customFieldValues from './custom-field-values';
 import comments from './comments';
 import activities from './activities';
+import timeEntries from './time-entries';
 import notifications from './notifications';
 import notificationServices from './notification-services';
 
@@ -57,6 +58,7 @@ export default [
   customFieldValues,
   comments,
   activities,
+  timeEntries,
   notifications,
   notificationServices,
 ];

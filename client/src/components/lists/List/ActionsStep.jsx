@@ -14,6 +14,7 @@ import selectors from '../../../selectors';
 import entryActions from '../../../entry-actions';
 import { useSteps } from '../../../hooks';
 import { ListTypes } from '../../../constants/Enums';
+import Config from '../../../constants/Config';
 import EditColorStep from './EditColorStep';
 import SortStep from './SortStep';
 import MoveStep from './MoveStep';
@@ -89,6 +90,27 @@ const ActionsStep = React.memo(({ listId, onNameEdit, onCardAdd, onClose }) => {
   const handleDeleteClick = useCallback(() => {
     openStep(StepTypes.DELETE);
   }, [openStep]);
+
+  const handleExportTimeReport = useCallback(() => {
+    fetch(`${Config.BASE_PATH}/api/lists/${listId}/export-time-report`, {
+      credentials: 'include',
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error('Export failed');
+        return response.blob();
+      })
+      .then((blob) => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `time-report.ods`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      })
+      .catch(() => {});
+  }, [listId]);
 
   if (step) {
     switch (step.type) {
@@ -179,6 +201,12 @@ const ActionsStep = React.memo(({ listId, onNameEdit, onCardAdd, onClose }) => {
               })}
             </Menu.Item>
           )}
+          <Menu.Item className={styles.menuItem} onClick={handleExportTimeReport}>
+            <Icon name="file excel outline" className={styles.menuItemIcon} />
+            {t('action.exportTimeReport', {
+              context: 'title',
+            })}
+          </Menu.Item>
           <Menu.Item className={styles.menuItem} onClick={handleDeleteClick}>
             <Icon name="trash alternate outline" className={styles.menuItemIcon} />
             {t('action.deleteList', {

@@ -779,6 +779,7 @@ export default class extends BaseModel {
 
     this.customFieldValues.delete();
     this.comments.delete();
+    this.timeEntries.delete();
   }
 
   deleteWithClearable() {

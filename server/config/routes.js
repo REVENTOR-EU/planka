@@ -169,6 +169,7 @@ module.exports.routes = {
   'POST /api/lists/:id/sort': 'lists/sort',
   'POST /api/lists/:id/move-cards': 'lists/move-cards',
   'POST /api/lists/:id/clear': 'lists/clear',
+  'GET /api/lists/:id/export-time-report': 'lists/export-time-report',
   'DELETE /api/lists/:id': 'lists/delete',
 
   'GET /api/lists/:listId/cards': 'cards/index',
@@ -182,6 +183,10 @@ module.exports.routes = {
   'DELETE /api/cards/:cardId/card-memberships/userId::userId': 'card-memberships/delete',
   'POST /api/cards/:cardId/card-labels': 'card-labels/create',
   'DELETE /api/cards/:cardId/card-labels/labelId::labelId': 'card-labels/delete',
+
+  'POST /api/cards/:cardId/time-entries/start': 'time-entries/start',
+  'POST /api/time-entries/:id/stop': 'time-entries/stop',
+  'GET /api/cards/:cardId/time-entries': 'time-entries/index',
 
   'POST /api/cards/:cardId/task-lists': 'task-lists/create',
   'GET /api/task-lists/:id': 'task-lists/show',

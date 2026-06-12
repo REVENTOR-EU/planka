@@ -260,5 +260,9 @@ module.exports = {
       collection: 'Action',
       via: 'cardId',
     },
+    timeEntries: {
+      collection: 'TimeEntry',
+      via: 'cardId',
+    },
   },
 };

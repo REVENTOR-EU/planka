@@ -28,6 +28,7 @@ import DueDateChip from '../DueDateChip';
 import StopwatchChip from '../StopwatchChip';
 import EditDueDateStep from '../EditDueDateStep';
 import EditStopwatchStep from '../EditStopwatchStep';
+import TimeEntryLog from '../TimeEntryLog';
 import ExpandableMarkdown from '../../common/ExpandableMarkdown';
 import EditMarkdown from '../../common/EditMarkdown';
 import ConfirmationStep from '../../common/ConfirmationStep';
@@ -546,6 +547,17 @@ const ProjectContent = React.memo(() => {
               <Communication />
             </div>
           </div>
+          {card.type === CardTypes.PROJECT && card.stopwatch && (
+            <div className={styles.contentModule}>
+              <div className={styles.moduleWrapper}>
+                <Icon name="clock outline" className={styles.moduleIcon} />
+                <div className={styles.moduleHeader}>
+                  {t('common.timeEntries')}
+                </div>
+                <TimeEntryLog cardId={card.id} />
+              </div>
+            </div>
+          )}
         </Grid.Column>
         <Grid.Column width={4} className={styles.sidebarPadding}>
           <div className={styles.sticky}>

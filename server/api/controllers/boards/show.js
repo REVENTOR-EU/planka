@@ -236,6 +236,8 @@ module.exports = {
     const customFields = await CustomField.qm.getByCustomFieldGroupIds(customFieldGroupIds);
     const customFieldValues = await CustomFieldValue.qm.getByCardIds(cardIds);
 
+    const timeEntries = cardIds.length > 0 ? await TimeEntry.qm.getByCardIds(cardIds) : [];
+
     const cardSubscriptions = await CardSubscription.qm.getByCardIdsAndUserId(
       cardIds,
       currentUser.id,
@@ -272,6 +274,7 @@ module.exports = {
         customFieldGroups,
         customFields,
         customFieldValues,
+        timeEntries,
         users: sails.helpers.users.presentMany(users, currentUser),
         projects: [project],
         attachments: sails.helpers.attachments.presentMany(attachments),

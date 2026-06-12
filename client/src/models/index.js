@@ -22,6 +22,7 @@ import CustomField from './CustomField';
 import CustomFieldValue from './CustomFieldValue';
 import Comment from './Comment';
 import Activity from './Activity';
+import TimeEntry from './TimeEntry';
 import Notification from './Notification';
 import NotificationService from './NotificationService';
 
@@ -45,6 +46,7 @@ export {
   CustomFieldValue,
   Comment,
   Activity,
+  TimeEntry,
   Notification,
   NotificationService,
 };

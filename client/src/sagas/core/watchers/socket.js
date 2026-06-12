@@ -293,6 +293,14 @@ const createSocketEventsChannel = () =>
       emit(entryActions.handleNotificationServiceDelete(item));
     };
 
+    const handleTimeEntryCreate = api.makeHandleTimeEntryCreate(({ item }) => {
+      emit(entryActions.handleTimeEntryCreate(item));
+    });
+
+    const handleTimeEntryUpdate = api.makeHandleTimeEntryUpdate(({ item }) => {
+      emit(entryActions.handleTimeEntryUpdate(item));
+    });
+
     socket.on('disconnect', handleDisconnect);
     socket.on('reconnect', handleReconnect);
 
@@ -388,6 +396,9 @@ const createSocketEventsChannel = () =>
     socket.on('notificationServiceCreate', handleNotificationServiceCreate);
     socket.on('notificationServiceUpdate', handleNotificationServiceUpdate);
     socket.on('notificationServiceDelete', handleNotificationServiceDelete);
+
+    socket.on('timeEntryCreate', handleTimeEntryCreate);
+    socket.on('timeEntryUpdate', handleTimeEntryUpdate);
 
     return () => {
       socket.off('disconnect', handleDisconnect);
@@ -485,6 +496,9 @@ const createSocketEventsChannel = () =>
       socket.off('notificationServiceCreate', handleNotificationServiceCreate);
       socket.off('notificationServiceUpdate', handleNotificationServiceUpdate);
       socket.off('notificationServiceDelete', handleNotificationServiceDelete);
+
+      socket.off('timeEntryCreate', handleTimeEntryCreate);
+      socket.off('timeEntryUpdate', handleTimeEntryUpdate);
     };
   });
 

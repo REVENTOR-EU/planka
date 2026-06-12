@@ -319,6 +319,33 @@ module.exports = {
       'isSubscribed',
     ]);
 
+    if (values.stopwatch && boardMembership.role === BoardMembership.Roles.EDITOR) {
+      const prevStopwatch = card.stopwatch;
+      const nextStopwatch = values.stopwatch;
+
+      if (!prevStopwatch && nextStopwatch && nextStopwatch.startedAt) {
+        await sails.helpers.timeEntries.startOne.with({
+          card,
+          project,
+          board,
+          list,
+          actorUser: currentUser,
+          request: this.req,
+        });
+      } else if (prevStopwatch && prevStopwatch.startedAt && nextStopwatch && !nextStopwatch.startedAt) {
+        const runningEntry = await TimeEntry.qm.getRunningByUserId(currentUser.id);
+        if (runningEntry && runningEntry.cardId === card.id) {
+          await sails.helpers.timeEntries.stopOne.with({
+            timeEntry: runningEntry,
+            project,
+            board,
+            list,
+            request: this.req,
+          });
+        }
+      }
+    }
+
     card = await sails.helpers.cards.updateOne
       .with({
         project,

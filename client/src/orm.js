@@ -25,6 +25,7 @@ import {
   ProjectManager,
   Task,
   TaskList,
+  TimeEntry,
   User,
   Webhook,
 } from './models';
@@ -53,6 +54,7 @@ orm.register(
   CustomFieldValue,
   Comment,
   Activity,
+  TimeEntry,
   Notification,
   NotificationService,
 );

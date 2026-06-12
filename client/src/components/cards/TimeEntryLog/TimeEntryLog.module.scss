@@ -1,0 +1,60 @@
+.wrapper {
+  margin-top: 4px;
+}
+
+.empty {
+  color: #888;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.entry {
+  display: flex;
+  align-items: flex-start;
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.entryUser {
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.entryContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.entryHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.entryName {
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.entryDate {
+  color: #888;
+  font-size: 12px;
+}
+
+.entryDetails {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #666;
+  margin-top: 2px;
+}
+
+.entryDuration {
+  font-weight: 500;
+  color: #333;
+}
